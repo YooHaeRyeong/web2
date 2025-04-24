@@ -1,0 +1,421 @@
+<html>
+    <head>
+        <title>거래 페이지</title>
+        <style>
+            @font-face {
+                font-family: 'BookkMyungjo-Bd';
+                src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            html, body {
+                font-family: 'BookkMyungjo-Bd', serif;
+                margin: 0;
+                height: 100%;
+            }
+
+            body {
+                background-image: url(bg-img.jpg);
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+            }
+
+            .navbar {
+                background-color: #FFC600;
+                padding: 15px 60px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                color: red;
+                font-size: 24px;
+                font-weight: bold;
+                text-decoration: none;
+                margin-left: 60px;
+            }
+
+            .nav-menu {
+                list-style: none;
+                display: flex;
+                margin: 0;
+                padding: 0;
+                margin-right: 60px;
+            }
+
+            .nav-menu li {
+                margin-left: 80px;
+            }
+
+            .nav-menu a {
+                color: red;
+                text-decoration: none;
+                font-size: 20px;
+            }
+
+            .nav-menu a:hover {
+                text-decoration: underline;
+            }
+
+            .wrap {
+                position: relative;
+                width: 100%;
+                height: 100vh;
+            }
+
+            .image-container {
+                position: relative;
+                width: 100%;
+            }
+
+            .base-image {
+                position: relative;
+                z-index: 2;
+            }
+
+            .overlay-image {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                z-index: 1;
+            }
+
+            .text-container {
+                position: absolute;
+                text-align: center;
+                color: white;
+                z-index: 2;
+            }
+
+            .text-container h1 {
+                font-size: 34px;
+                margin-bottom: 20px;
+            
+            }
+
+            .text-container p {
+                font-size: 20px;
+    
+            }
+
+            @keyframes shake {
+                0% { transform: rotate(-5deg); }
+                50% { transform: rotate(5deg); }
+                100% { transform: rotate(-5deg); }
+            }
+
+            .image-container img {
+                position: absolute;
+                width: 100%;
+            }
+
+            .animated-image {
+                animation: shake 1.5s ease-in-out infinite;
+                transform-origin: center center;
+            }
+
+            .main-text-container {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .step-text-container {
+                width: 100%;
+                text-align: left;
+            }
+
+            .title-container {
+                display: flex;
+                gap: 20px;
+                padding-left: 150px;
+                padding-top: 200px;
+            }
+
+            .step-text-container p {
+                padding-left: 270px;
+            }
+
+            .description-text {
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                top: 700px;
+                color: black;
+                z-index: 2;
+            }
+
+            .description-text p {
+                font-size: 24px;
+                line-height: 2.5;
+                margin: 0;
+            }
+
+            #img-9 {
+                width: 60%;
+                top: 380px;
+                left: 200px;
+                z-index: 2;
+            }
+
+            #img-10 {
+                width: 100%;
+                top: -150px;
+                left: 0;
+                z-index: 1;
+            }
+
+            #img-11 {
+                width: 20%;
+                top: 400px;
+                left: 18%;
+                z-index: 1;
+            }
+
+            #img-12 {
+                width: 20%;
+                top: 400px;
+                left: 43%;
+                z-index: 1;
+            }
+
+            #img-13 {
+                width: 20%;
+                top: 400px;
+                left: 68%;
+                z-index: 1;
+            }
+
+            #img-14 {
+                width: 100%;
+                top: 450px;
+                left: 0%;
+            }
+
+            .input-section {
+                text-align: center;
+                padding: 100px 0;
+                margin-top: 300px;
+                background: transparent;
+            }
+
+            .input-section h2 {
+                color: #FFC600;
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+
+            .input-box {
+                width: 60%;
+                height: 150px;
+                background-color: rgba(51, 51, 51, 0.7);
+                border: none;
+                padding: 20px;
+                color: white;
+                font-size: 16px;
+                margin-bottom: 30px;
+                resize: none;
+                font-family: 'BookkMyungjo-Bd', serif;
+            }
+
+            .submit-btn {
+                display: inline-block;
+                color: #FFC600;
+                text-decoration: none;
+                font-size: 20px;
+                padding: 10px 20px;
+                position: relative;
+            }
+
+            .submit-btn::after {
+                content: "→";
+                margin-left: 10px;
+                font-size: 24px;
+            }
+
+            .submit-btn:hover {
+                opacity: 0.8;
+            }
+
+            .review-section {
+                margin-top: -450px;
+                margin-bottom: 50px;
+                padding-left: 100px;
+            }
+
+            .review-title {
+                color: white;
+                font-size: 32px;
+                margin-bottom: 50px;
+                text-align: left;
+            }
+
+            .review-container {
+                display: flex;
+                justify-content: flex-start;
+                gap: 30px;
+                flex-wrap: wrap;
+                padding-right: 50px;
+            }
+
+            .review-card {
+                background-color: rgba(255, 255, 255, 0.9);
+                padding: 30px;
+                width: 300px;
+                min-height: 200px;
+                text-align: left;
+                transform: rotate(-5deg);
+                transition: transform 0.3s ease;
+            }
+
+            .review-card:nth-child(2) {
+                transform: rotate(2deg);
+            }
+
+            .review-card:nth-child(3) {
+                transform: rotate(5deg);
+            }
+
+            .review-card:hover {
+                transform: rotate(0deg) scale(1.05);
+            }
+
+            .review-text {
+                font-size: 16px;
+                line-height: 1.6;
+                color: #333;
+            }
+
+            footer {
+                background-color: rgba(0, 0, 0, 0.7);
+                padding: 60px 0;
+                color: #FFC600;
+            }
+
+            .footer-content {
+                padding-left: 100px;
+            }
+
+            .footer-title {
+                color: red;
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .footer-info {
+                color: white;
+                font-size: 16px;
+                line-height: 1.8;
+            }
+
+            .footer-info p {
+                margin: 5px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="#" class="logo">O.S.S</a>
+            <ul class="nav-menu">
+                <li><a href="#">step1</a></li>
+                <li><a href="#">step2</a></li>
+                <li><a href="#">step3</a></li>
+                <li><a href="#">step4</a></li>
+            </ul>
+        </nav>
+        <section>
+            <div class="wrap">
+                <div class="text-container main-text-container">
+                    <h1 style="padding-top: 50px;">거래가 성사되었습니다.^^ 환영합니다~</h1>
+                    <p style="padding-top: 550px;">기회 잡기 의뢰는 다음과 같이 진행됩니다.</p>
+                </div>
+                <div class="image-container">
+                    <img src="img_8.png" alt="animated image" class="animated-image" style="top: 200px;">
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="wrap">
+                <div class="text-container step-text-container">
+                    <div class="title-container">
+                        <h1>step1</h1>
+                        <h1>기회 의뢰 접수</h1>
+                    </div>
+                    <p>당신이 놓친 기회를 분석하고, 어떤 방법으로 되찾을지 결정합니다.</p>
+                </div>
+                <div class="image-container">
+                    <img src="img_9.png" id="img-9">
+                    <img src="img_10.png" id="img-10">
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="wrap" style="padding-top: 250px;">
+                <div class="text-container step-text-container">
+                    <div class="title-container">
+                        <h1>step2</h1>
+                        <h1>작전 수행 / 기회 밀수 진행</h1>
+                    </div>
+                    <p>숙련된 전문 밀수팀이 기회를 되찾기 위한 맞춤형 작전을 수행합니다.</p>
+                </div>
+                <div class="image-container">
+                    <img src="img_11.png" id="img-11">
+                    <img src="img_12.png" id="img-12">
+                    <img src="img_13.png" id="img-13">
+                </div>
+                <div class="description-text" style="padding-top: 400px; color: white;">
+                    <p>비공식 정보망, 연줄, 비밀 커넥션등을 이용해<br>
+                    합법과 불법 사이를 유연하게 넘나드는 방식으로 기회를 확보합니다.</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="wrap" style="padding-bottom: 400px;">
+                <div class="text-container step-text-container">
+                    <div class="title-container">
+                        <h1>step3</h1>
+                        <h1>기회 전달</h1>
+                    </div>
+                    <p>성공적으로 회수된 기회를 은밀하고 안전하게 전달합니다.</p>
+                </div>
+                <div class="image-container">
+                    <img src="img_14.png" id="img-14">
+                </div>
+            </div>
+        </section>
+        <section class="input-section wrap" style="padding-top: 500px;">
+            <h2>그럼, 이제 당신의 의뢰 사항을 들려주세요.</h2>
+            <textarea class="input-box" placeholder="의뢰 내용을 입력하세요..."></textarea>
+            <div>
+                <a href="#" class="submit-btn">기회 잡으러 가기</a>
+            </div>
+        </section>
+        <section class="review-section"  style="padding-left: 200px; padding-top: 10px; padding-bottom: 200px;">
+            <h2 class="review-title">고객후기</h2>
+            <div class="review-container">
+                <div class="review-card">
+                    <p class="review-text">그 여자와 결혼한 제 첫사랑을 되찾고 싶었어요. 3년전에 좋아했는데 놓쳐서 아쉬웠던 그, 도덕적이지는 않았지만 확실한 기회를 만들어주셨어요. 그가 그 여자와 이혼하고 내게 오도록요.</p>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">값이 오르기 전 그 땅 살걸.. 했는데 이런 기회까지 되찾아주다니요..! S.S.O의 부동산 브로커가 동일 조건의 땅을 찾아줬어요. 조금 불법적이었지만, 뭐, 상관없잖아요?</p>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">와 진짜 작년에 놓친 한정판 스니커즈가 찾아왔어요. 아무도 팔지 않을텐데 어떻게 구하신건가요? 피가 묻어 있어서 중고같긴 하지만, 중고라도 감지덕지라 만족합니다~~</p>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-content">
+                <h3 class="footer-title">O.S.S (Opportunity Smuggling Syndicate)</h3>
+                <div class="footer-info">
+                    <p>놓친 기회를 되찾고 싶다면, 지금 바로 거래하세요!</p>
+                    <p>비밀 거래 메일　opportunity-smugglers@ossmail.com</p>
+                    <p>비밀 거래 전화　002-0202-2002</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

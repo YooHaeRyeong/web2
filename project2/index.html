@@ -1,0 +1,322 @@
+<html>
+    <head>
+        <title>기회 밀수 조직 O.S.S</title>
+        <style>
+            @font-face {
+                font-family: 'BookkMyungjo-Bd';
+                src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            html, body {
+                font-family: 'BookkMyungjo-Bd', serif;
+                margin: 0;
+                height: 100%;
+            }
+
+            body {
+                background-image: url(bg-img.jpg);
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                color: white;
+            }
+
+            section {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            strong{
+                color: #FF0000;
+            }
+
+            strong2{
+                color: #FFD700;
+            }
+
+            em{
+                border-bottom: 1px solid #ffffff;
+                font-style: normal;
+                cursor: pointer;
+                transition: opacity 0.3s ease;
+            }
+
+            em:hover {
+                opacity: 0.7;
+            }
+
+            .wrap {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0px;
+            }
+
+            .image-container {
+                position: relative;
+                width: 100%;
+            }
+
+            .single-image {
+                width: 55%;
+                margin: 0 auto;
+                display: block;
+                z-index: 1;
+            }
+
+            .overlay-image {
+                position: absolute;
+                top: 33%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                z-index: 2;
+            }
+
+            .image-text {
+                position: absolute;
+                width: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 3;
+            }
+
+            .text_1 {
+                font-size: 32px;
+                line-height: 1.9;
+            }
+
+            .text_2 {
+                font-size: 30px;
+                line-height: 1.8;
+            }
+
+            .deal-button {
+                background-color: #FFD700;
+                color: #FF0000;
+                padding: 20px 40px;
+                cursor: pointer;
+                display: inline-block;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                text-decoration: none;
+            }
+
+            .deal-button:hover {
+                background-color: #FFC600;
+                transform: scale(1.05);
+            }
+
+            .fade-in {
+                opacity: 0;
+                animation: fadeIn 2s ease-in forwards;
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes fadeInAndShake {
+                0% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%);
+                }
+                30% {
+                    opacity: 1;
+                    transform: translate(-50%, -50%);
+                }
+                45% {
+                    transform: translate(-50.6%, -50%);
+                }
+                60% {
+                    transform: translate(-49.7%, -50%);
+                }
+                75% {
+                    transform: translate(-50.3%, -50%);
+                }
+                85% {
+                    transform: translate(-49.9%, -50%);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            .fade-in-delayed {
+                opacity: 0;
+                animation: fadeInAndShake 2s ease-in-out forwards;
+                animation-delay: 2.2s;
+            }
+
+            .fade-in-text {
+                opacity: 0;
+                animation: fadeIn 1.5s ease-in forwards;
+                animation-delay: 4s;
+            }
+
+            @keyframes rotateText {
+                0% {
+                    opacity: 0;
+                    transform: rotate(0deg);
+                    transform-origin: 0% 50%;
+                }
+                30% {
+                    opacity: 1;
+                    transform: rotate(0deg);
+                    transform-origin: 0% 50%;
+                }
+                100% {
+                    opacity: 1;
+                    transform: rotate(45deg);
+                    transform-origin: 0% 50%;
+                }
+            }
+
+            .drop-text {
+                opacity: 0;
+            }
+
+            .drop-text.animate {
+                animation: rotateText 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            }
+
+            .fade-in-img4 {
+                opacity: 0;
+            }
+
+            .fade-in-img4.animate {
+                animation: fadeIn 1.5s ease-in forwards;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img4 = document.querySelector('.fade-in-img4');
+                            if (img4) {
+                                img4.classList.add('animate');
+                            }
+                        }
+                    });
+                }, {
+                    threshold: 0.5
+                });
+
+                const triggerText = document.querySelector('.trigger-text');
+                if (triggerText) {
+                    observer.observe(triggerText);
+                }
+
+                const scrollToTop = document.querySelector('.scroll-to-top');
+                if (scrollToTop) {
+                    scrollToTop.addEventListener('click', function() {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    });
+                }
+            });
+        </script>
+        <section>
+            <div class="wrap">
+                <div class="image-container">
+                    <img src="img_1.png" class="single-image fade-in" style="padding-top: 60px;">
+                    <img src="img_3.png" class="overlay-image fade-in-delayed">
+                    <p class="text_1 image-text fade-in-text" style="top: 60%;">
+                        아이고 저런.
+                        <br>그렇게 바라고 바래왔던 그 회사!
+                        <br>지원 기간을 착각하셨군요.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <p class="text_1" style="padding-top: 350px;">
+                    간만에 겨우 올라온 채용인데..
+                    <br>허무하게 날려버린 <strong2>기회</strong2>네요.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <div class="image-container">
+                    <img src="img_4.png" class="single-image fade-in-img4" style="padding-top: 350px; width: 100%;">
+                    <p class="text_1 image-text trigger-text" style="top: 30%;">
+                        아까워라.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <p class="text_1" style="padding-top: 300px;">
+                    놓쳐버린 그 <strong2>기회</strong2>,<br><br>
+                    <br>저<br>희<br>가<br> <br>다<br>시<br> <br>잡<br>아<br>드<br>릴<br>까<br>요<br>?
+                </p>
+                <img src="img_5.png" class="single-image" style="width: 90%;">
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <p class="text_2">
+                    <strong2>당신이 어떤것을 놓쳤든, 그에 상응하는 기회를 잡아드립니다.</strong2>
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap text_2 image-container">
+                <img src="img_6.png" class="single-image" style="width: 22%; padding-top: 550px;">
+                <p class="image-text" style="top: 66%; line-height: 3;">
+                    기회를 다시 잡기 위한 우리의 방법은
+                    <br>약간은 불법적일 수 있습니다.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap text_2 image-container">
+                <img src="img_7.png" class="single-image" style="width: 22%; padding-top: 550px; padding-right: 40px;">
+                <p class="image-text" style="top: 79%; font-size: 46px;">
+                    하지만   <strong>확실한 결과를</strong>   보장하죠.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap text_2">
+                <p style="padding-top: 350px; font-size: 38px;">
+                    저희가 필요한건 돈 뿐입니다.
+                    <br> 거래 하시겠습니까?
+                </p>
+            </div>
+        </section>
+        <div class="wrap" style="padding-top: 30px;">
+            <a href="index2.html" class="deal-button" style="font-size: 44px;">
+                거래하기
+            </a>
+        </div>
+        <div class="wrap" style="font-size: 15px; padding-top: 60px; padding-bottom: 300px;">
+            <em class="scroll-to-top">거래 안하고 평생 기회 놓치기</em>
+        </div>
+    </body>
